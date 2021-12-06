@@ -1,10 +1,21 @@
 <?php
-$coon = mysqli_connect('localhost','admin','Igorek13!','ua92');
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "ua92";
 
-if(!$coon){
-    echo 'Connection not succeful error:'. mysqli_connect_error();
-}else{
-    echo 'conecction succesful';
+// Create connection to the db
+$conn =  mysqli_connect($servername, $username, $password);
+
+// Checks the connection to the db
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
+// echo "Connected successfully";
 
+$db_selected = mysqli_select_db($conn, $dbname);
+
+if (!$db_selected){
+    // echo "Couldn't select database";
+}
 ?>
