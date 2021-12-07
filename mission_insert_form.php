@@ -18,6 +18,58 @@ $result = mysqli_query($conn, "SELECT * FROM targets");
 ?>
 
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded"">
+        <div class=" container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.php">Moon Elites</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample10"
+            aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown"
+                        aria-expanded="false">Mission</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                        <li><a class="dropdown-item" href="mission_insert_form.php">Add Mission</a></li>
+                        <li><a class="dropdown-item" href="">Del Mission</a></li>
+                        <li><a class="dropdown-item" href="view_mission.php">View MIssions</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown"
+                        aria-expanded="false">Astronout</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                        <li><a class="dropdown-item" href="astrount_inset_forum.php">Add Astronout</a></li>
+                        <li><a class="dropdown-item" href="#">Remove Astronout </a></li>
+                        <li><a class="dropdown-item" href="view_astronaut.php">View Astrounts</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown"
+                        aria-expanded="false">Attends</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                        <li><a class="dropdown-item" href="view_attends.php">View Attends</a></li>
+                        <li><a class="dropdown-item" href="attends_insert.php">Add Attends</a></li>
+                        <li><a class="dropdown-item" href="#">Remove attends</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown"
+                        aria-expanded="false">Target</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                        <li><a class="dropdown-item" href="view_target.php">View target</a></li>
+                        <li><a class="dropdown-item" href="target_insert_forum.php">Add target</a></li>
+                        <li><a class="dropdown-item" href="#">Remove target</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
     <form action="" method="POST">
         <div class="mb-3 mt-3">
             <label for="name" class="form-label">Misssion Name:</label>
@@ -48,7 +100,7 @@ $result = mysqli_query($conn, "SELECT * FROM targets");
             </select>   
         </div>
        
-        <input type = "submit" name = "submit" value = "Submit">
+        <input type = "submit" name = "submit" value = "Submit" class="btn btn-warning">
         <!-- <button type="submit" name="sub" class="btn btn-primary">Submit</button> -->
     </form>
 </body>
