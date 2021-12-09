@@ -2,7 +2,7 @@
 include 'Contection.php';
 // $query = "insert into names values('$mission_name','$destination','$launch_date','$type','$crew_size','$target_id')";
 // print "<p> Misssions Information Inserted </p>";
-$result = mysqli_query($conn, "SELECT * FROM Astronaut");
+$result = mysqli_query($conn, "SELECT * FROM astronaut");
 ?>
 
 <head>

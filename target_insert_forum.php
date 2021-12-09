@@ -10,9 +10,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded"">
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded"">
         <div class=" container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="index.php">Moon Elites</a>
@@ -67,7 +65,7 @@
             <input type="text" class="form-control" placeholder="Enter type" name="type">
         </div>
 
-                
+
         <input type="submit" name="submit" value="Submit" class="btn btn-warning">
         <!-- <button type="submit" name="sub" class="btn btn-primary">Submit</button> -->
     </form>
