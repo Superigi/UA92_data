@@ -17,47 +17,40 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="index.php">Moon Elites</a>
         </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample10"
-            aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown"
-                        aria-expanded="false">Mission</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Mission</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown10">
-                        <li><a class="dropdown-item" href="mission_insert_form.php">Add Mission</a></li>
-                        <li><a class="dropdown-item" href="">Del Mission</a></li>
                         <li><a class="dropdown-item" href="view_mission.php">View MIssions</a></li>
+                        <li><a class="dropdown-item" href="mission_insert_form.php">Add Mission</a></li>
+
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown"
-                        aria-expanded="false">Astronout</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Astronout</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown10">
-                        <li><a class="dropdown-item" href="astrount_inset_forum.php">Add Astronout</a></li>
-                        <li><a class="dropdown-item" href="#">Remove Astronout </a></li>
                         <li><a class="dropdown-item" href="view_astronaut.php">View Astrounts</a></li>
+                        <li><a class="dropdown-item" href="astrount_inset_forum.php">Add Astronout</a></li>
+
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown"
-                        aria-expanded="false">Attends</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Attends</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown10">
                         <li><a class="dropdown-item" href="view_attends.php">View Attends</a></li>
                         <li><a class="dropdown-item" href="attends_insert.php">Add Attends</a></li>
-                        <li><a class="dropdown-item" href="#">Remove attends</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown"
-                        aria-expanded="false">Target</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Target</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown10">
                         <li><a class="dropdown-item" href="view_target.php">View target</a></li>
                         <li><a class="dropdown-item" href="target_insert_forum.php">Add target</a></li>
-                        <li><a class="dropdown-item" href="#">Remove target</a></li>
                     </ul>
                 </li>
             </ul>
@@ -74,10 +67,7 @@
             <input type="text" class="form-control" placeholder="Enter type" name="type">
         </div>
 
-        <div class="mb-3">
-            <label for="no_missions" class="form-label">No Missions:</label>
-            <input type="integer" class="form-control" placeholder="Enter no missions" name="no_missions">
-        </div>
+                
         <input type="submit" name="submit" value="Submit" class="btn btn-warning">
         <!-- <button type="submit" name="sub" class="btn btn-primary">Submit</button> -->
     </form>
@@ -88,15 +78,16 @@
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
 include 'Contection.php';
+include 'val.php';
 
 if (isset($_POST['submit'])) {
     // Escape user inputs for security
-    $first_mission = mysqli_real_escape_string($conn, $_POST['first_mission']);
-    $type = mysqli_real_escape_string($conn, $_POST['type']);
-    $no_mission = mysqli_real_escape_string($conn, $_POST['no_mission']);
+    $first_mission = test_input(mysqli_real_escape_string($conn, $_POST['first_mission']));
+    $type = test_input(mysqli_real_escape_string($conn, $_POST['type']));
+
 
     // Attempt insert query execution
-    $sql = "INSERT INTO targets (first_mission,type, no_mission) VALUES ('$first_mission', '$type', '$no_mission')";
+    $sql = "INSERT INTO targets (first_mission,type) VALUES ('$first_mission', '$type')";
     if (mysqli_query($conn, $sql)) {
         echo "Records added successfully.";
     } else {

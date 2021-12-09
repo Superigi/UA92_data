@@ -90,7 +90,7 @@ $result = mysqli_query($conn, "SELECT * FROM targets");
         
         <div class="mb-3">
         <label for="type" class="form-label">Target ID:</label>
-            <select id="target_ids" name="target_ids">
+            <select id="target_ids" name="target_ids" class ="form-control form-control-lg">
         <?php
         foreach ($result as $row ) {
             $thisValue = $row['target_id'];
@@ -113,11 +113,11 @@ include 'Contection.php';
 
 if (isset($_POST['submit'])) {
     //Escape user inputs for validation
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $destination = mysqli_real_escape_string($conn, $_POST['destination']);
-    $type = mysqli_real_escape_string($conn, $_POST['type']);
-    $target_id = mysqli_real_escape_string($conn, $_POST['target_ids']);
-    $lanch_date = mysqli_real_escape_string($conn,$_POST['Launch_Date']);
+    $name = test_input (mysqli_real_escape_string($conn, $_POST['name']));
+    $destination = test_input(mysqli_real_escape_string($conn, $_POST['destination']));
+    $type = test_input(mysqli_real_escape_string($conn, $_POST['type']));
+    $target_id = test_input(mysqli_real_escape_string($conn, $_POST['target_ids']));
+    $lanch_date = test_input(mysqli_real_escape_string($conn,$_POST['Launch_Date']));
 
     // $name =$_POST['name'];
     // $destination =$_POST['destination'];
@@ -133,6 +133,13 @@ if (isset($_POST['submit'])) {
     } else {
         echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
     }
+    $as = mysqli_query($conn, "SELECT no_mission FROM targets WHERE target_id = $target_id ");
+
+    $result2 = mysqli_fetch_assoc($as);
+    $current_missions = $result2['no_missions'];
+    $new_no_mission =  $current_missions + 1;
+
+    mysqli_query($conn, "UPDATE targets SET no_missions=$new_no_mission  WHERE target_id = $target_id ");
 
     // Close connection
     mysqli_close($conn);
