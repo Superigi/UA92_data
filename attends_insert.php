@@ -76,6 +76,7 @@ $result1 = mysqli_query($conn, "SELECT * FROM mission");
                     }
                     ?>
                 </select>
+                <!-- selction option that pulls data of target ids and allows user to choses which id they wan t to speify -->
             </div>
             <div class="mb-3">
                 <label for="type" class="form-control form-control-lg form-label">Astronaut ID:</label>
@@ -87,10 +88,11 @@ $result1 = mysqli_query($conn, "SELECT * FROM mission");
                     }
                     ?>
                 </select>
+                <!-- selction option that pulls data of target ids and allows user to choses which id they wan t to speify -->
             </div>
 
             <input type="submit" name="submit" value="Submit" class="btn btn-warning">
-            <!-- <button type="submit" name="sub" class="btn btn-primary">Submit</button> -->
+           
         </form>
     </div>
 </body>
@@ -106,7 +108,9 @@ include 'val.php';
 if (isset($_POST['submit'])) {
     //Escape user inputs for validation
     $mission_name = test_input (mysqli_real_escape_string($conn, $_POST['mission_id']));
+    //imput with the correct name deffinetion is put in to a varible
     $astronaut_id = test_input( mysqli_real_escape_string($conn, $_POST['astronaut_id']));
+    //imput with the correct name deffinetion is put in to a varible
 
     // $name =$_POST['name'];
     // $destination =$_POST['destination'];
@@ -115,7 +119,7 @@ if (isset($_POST['submit'])) {
     // $lanch_date = $_POST['Launch_Date'];
     // // print_r($target_id);
 
-    // Attempt insert query execution
+    // Attempt insert query execution using the varibles defined
     $sql = "INSERT INTO attends (mission_id ,astronaut_id) VALUES ('$mission_name',$astronaut_id)";
     if (mysqli_query($conn, $sql)) {
         echo "Records added successfully.";
@@ -124,30 +128,31 @@ if (isset($_POST['submit'])) {
     }
 
     $as = mysqli_query($conn, "SELECT no_missions FROM astronaut WHERE astronaut_id = $astronaut_id ");
+    // pull all tragets rows which the specify target  varible
 
     $result2 = mysqli_fetch_assoc($as);
+    //puts the results in to a varible
     $current_missions = $result2['no_missions'];
+     //speficys the correct collum
     $new_no_mission =  $current_missions + 1;
+    //adds to the collum that is specifed with the id from $...id
 
     mysqli_query($conn, "UPDATE astronaut SET no_missions=$new_no_mission  WHERE astronaut_id = $astronaut_id ");
+    //pushes it to the table
+
 
     $mi = mysqli_query($conn, "SELECT crew_size FROM mission WHERE mission_id = $mission_name ");
+    // pull all tragets rows which the specify target  varible
 
     $result2 = mysqli_fetch_assoc($mi);
+    //puts the results in to a varible
     $current_crew_size = $result2['crew_size'];
+     //speficys the correct collum
     $new_crew_size =  $current_crew_size + 1;
+     //adds to the collum that is specifed with the id from $...idthat is specifed with the id from $...id
 
     mysqli_query($conn, "UPDATE mission SET crew_size=$new_crew_size  WHERE mission_id = $mission_name  ");
-    // echo "hello"; 
-
-    // $newas = $as+1;
-    // $alteras = "UPDATE astronaut (no_mission) WHERE astronaut_id =$astronaut_id VALUES ($newas)";
-    // if (mysqli_query($conn, $alteras)) {
-    //     echo "Records added successfully.";
-    // } else {
-    //     echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
-    //     print($as);
-    // }
+     //pushes it to the table
 
 
     // Close connection

@@ -1,7 +1,10 @@
-body{
+body {
     background-image: url("bg.jpg");
     opacity: 1;
-  }
-  nav{
-      background-color: white;
-  }
+    /* uses the speficed image to be the bacground */
+}
+
+nav {
+    background-color: white;
+    /* makes the navbar white */
+}

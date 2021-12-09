@@ -7,12 +7,12 @@ $result = mysqli_query($conn, "SELECT * FROM targets");
 
 <head>
   <meta charset="utf-8">
-  <!-- making is moblie device first-->
+  
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Latest compiled and minified CSS -->
+  <!-- Lastest bootstrap css -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Latest compiled JavaScript -->
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 

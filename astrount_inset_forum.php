@@ -2,12 +2,12 @@
 
 <head>
     <meta charset="utf-8">
-    <!-- making is moblie device first-->
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Latest compiled and minified CSS -->
+    <!-- Lastest bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Latest compiled JavaScript -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
@@ -61,29 +61,33 @@
         <div class="mb-3 mt-3">
             <label for="name" class="form-control form-control-lg form-label">Name:</label>
             <input type="text" class="form-control form-control-lg "placeholder="Enter Name" name="name">
+            <!-- Imput which is defined by name -->
         </div>
         <div class="mb-3">
             <label for="no_missions" class="form-control form-control-lg form-label">No Missions:</label>
             <input type="integer" class="form-control form-control-lg "  placeholder="Enter no missions" name="no_missions">
+             <!-- Imput which is defined by name -->
         </div>
         <input type = "submit" name = "submit" value = "Submit" class="btn btn-warning">
-        <!-- <button type="submit" name="sub" class="btn btn-primary">Submit</button> -->
+         <!-- Imput which is defined by name -->
+       
     </form>
 </body>
 
 </html>
 <?php
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
+
 include 'Contection.php';
 include 'val.php';
 
 if (isset($_POST['submit'])) {
     // Escape user inputs for security
     $name = test_input(mysqli_real_escape_string($conn, $_POST['name']));
+    //imput with the correct name deffinetion is put in to a varible
     $no_missions = test_input(mysqli_real_escape_string($conn, $_POST['no_missions']));
+    //imput with the correct name deffinetion is put in to a varible
 
-    // Attempt insert query execution
+    // Attempt insert query execution using the varibles defined
     $sql = "INSERT INTO astronaut (name ,no_missions) VALUES ('$name','$no_missions')";
     if (mysqli_query($conn, $sql)) {
         echo "Records added successfully.";
@@ -91,7 +95,7 @@ if (isset($_POST['submit'])) {
         echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
     }
 
-    // Close connection
+    // Close of the connection
     mysqli_close($conn);
 }
 
