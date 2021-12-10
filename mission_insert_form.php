@@ -107,6 +107,7 @@ $result = mysqli_query($conn, "SELECT * FROM targets");
 /* Attempt MySQL server connection. 
 */
 include 'Contection.php';
+include 'val.php';
 
 if (isset($_POST['submit'])) {
     //Escape user inputs for validation
