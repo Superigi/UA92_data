@@ -123,7 +123,7 @@ if (isset($_POST['submit'])) {
 
     
         // Attempt insert query execution using the varibles defined
-    $sql = "INSERT INTO mission (mission_name ,destination,launch_date,type,target_id) VALUES ('$name','$destination','$lanch_date','$type',$target_id)";
+    $sql = "INSERT INTO mission (mission_name,destination,launch_date,type,target_id) VALUES ('$name','$destination','$lanch_date','$type',$target_id)";
     if (mysqli_query($conn, $sql)) {
         echo "Records added successfully.";
     } else {
