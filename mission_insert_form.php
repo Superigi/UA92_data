@@ -126,17 +126,6 @@ if (isset($_POST['submit'])) {
     $sql = "INSERT INTO mission (mission_name,destination,launch_date,type,target_id) VALUES ('$name','$destination','$lanch_date','$type',$target_id)";
     if (mysqli_query($conn, $sql)) {
         echo "Records added successfully.";
-        $as = mysqli_query($conn, "SELECT no_mission FROM targets WHERE target_id = $target_id ");
-        // pull all tragets rows which the specify target  varible
-        $result2 = mysqli_fetch_assoc($as);
-        //puts the results in to a varible
-        $current_missions = $result2['no_missions'];
-        //speficys the correct collum
-        $new_no_mission =  $current_missions + 1;
-        //adds to the collum that is specifed with the id from $...id
-
-        mysqli_query($conn, "UPDATE targets SET no_missions=$new_no_mission  WHERE target_id = $target_id ");
-        //pushes it to the table
     } else {
         echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
     }
